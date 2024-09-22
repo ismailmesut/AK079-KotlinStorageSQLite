@@ -1,5 +1,6 @@
 package com.ismailmesutmujde.kotlinstoragesqlite.view
 
+import android.app.Person
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -32,10 +33,17 @@ class MainActivity : AppCompatActivity() {
         //PersonsDao().updatePerson(db, 3, "New Zeynep", "1111111",100,1.22)
         //PersonsDao().deletePerson(db, 3)
 
+        //val result = PersonsDao().recordControl(db, "İsmail")
+        //Log.e("Record Control", result.toString())
 
-        val result = PersonsDao().recordControl(db, "İsmail")
-        Log.e("Record Control", result.toString())
-
+        val person = PersonsDao().bringPerson(db, 4)
+        if (person != null) {
+            Log.e("Person id     4", (person.person_id).toString())
+            Log.e("Person name   4", person.person_name)
+            Log.e("Person phone  4",person.person_phone)
+            Log.e("Person age    4", (person.person_age).toString())
+            Log.e("Person height 4", (person.person_height).toString())
+        }
 
         val personList = PersonsDao().allPersons(db)
         //val personList = PersonsDao().search(db,"met")

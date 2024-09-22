@@ -104,4 +104,20 @@ class PersonsDao {
         return result
     }
 
+    fun bringPerson(db:DatabaseHelper, person_id: Int) : Persons? {
+        var incomingPerson:Persons? = null
+        val db = db.writableDatabase
+        val cursor = db.rawQuery("SELECT * FROM persons WHERE person_id=$person_id", null)
+        while (cursor.moveToNext()) {
+            incomingPerson = Persons(
+                cursor.getInt(cursor.getColumnIndexOrThrow("person_id")),
+                cursor.getString(cursor.getColumnIndexOrThrow("person_name")),
+                cursor.getString(cursor.getColumnIndexOrThrow("person_phone")),
+                cursor.getInt(cursor.getColumnIndexOrThrow("person_age")),
+                cursor.getDouble(cursor.getColumnIndexOrThrow("person_height"))
+            )
+        }
+        return incomingPerson
+    }
+
 }
