@@ -92,4 +92,16 @@ class PersonsDao {
         return personsArrayList
     }
 
+    fun recordControl(db:DatabaseHelper, person_name:String) : Int {
+        var result = 0
+        val db = db.writableDatabase
+        val cursor = db.rawQuery("SELECT count(*) AS result FROM persons WHERE person_name='$person_name' ", null)
+
+        while (cursor.moveToNext()) {
+            result = cursor.getInt(cursor.getColumnIndexOrThrow("result"))
+        }
+
+        return result
+    }
+
 }

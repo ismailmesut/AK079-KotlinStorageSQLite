@@ -32,11 +32,14 @@ class MainActivity : AppCompatActivity() {
         //PersonsDao().updatePerson(db, 3, "New Zeynep", "1111111",100,1.22)
         //PersonsDao().deletePerson(db, 3)
 
-        //val personList = PersonsDao().allPersons(db)
 
+        val result = PersonsDao().recordControl(db, "İsmail")
+        Log.e("Record Control", result.toString())
+
+
+        val personList = PersonsDao().allPersons(db)
         //val personList = PersonsDao().search(db,"met")
-
-        val personList = PersonsDao().randomlyBring5People(db)
+        //val personList = PersonsDao().randomlyBring5People(db)
 
         for (p in personList) {
             Log.e("****************","****************")
