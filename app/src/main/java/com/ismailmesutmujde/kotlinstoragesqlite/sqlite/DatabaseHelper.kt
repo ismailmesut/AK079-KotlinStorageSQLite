@@ -1,4 +1,4 @@
-package com.ismailmesutmujde.kotlinstoragesqlite
+package com.ismailmesutmujde.kotlinstoragesqlite.sqlite
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
@@ -11,7 +11,7 @@ class DatabaseHelper(context : Context) : SQLiteOpenHelper(context, "guide", nul
     override fun onCreate(db: SQLiteDatabase?) {
 
         db?.execSQL("CREATE TABLE persons (person_id INTEGER PRIMARY KEY AUTOINCREMENT" +
-                ",person_nama TEXT,person_phone TEXT,person_age INTEGER,person_height DOUBLE);")
+                ",person_name TEXT,person_phone TEXT,person_age INTEGER,person_height DOUBLE);")
     }
 
     // What to do if a problem occurs in the database or it is deleted is specified here
