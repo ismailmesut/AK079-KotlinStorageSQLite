@@ -74,4 +74,22 @@ class PersonsDao {
         return personsArrayList
     }
 
+    fun randomlyBring5People(db:DatabaseHelper) : ArrayList<Persons> {
+        val personsArrayList = ArrayList<Persons>()
+        val db = db.writableDatabase
+        val cursor = db.rawQuery("SELECT * FROM persons ORDER BY RANDOM() LIMIT 5", null)
+
+        while(cursor.moveToNext()) {
+            val person = Persons(
+                cursor.getInt(cursor.getColumnIndexOrThrow("person_id")),
+                cursor.getString(cursor.getColumnIndexOrThrow("person_name")),
+                cursor.getString(cursor.getColumnIndexOrThrow("person_phone")),
+                cursor.getInt(cursor.getColumnIndexOrThrow("person_age")),
+                cursor.getDouble(cursor.getColumnIndexOrThrow("person_height"))
+            )
+            personsArrayList.add(person)
+        }
+        return personsArrayList
+    }
+
 }
