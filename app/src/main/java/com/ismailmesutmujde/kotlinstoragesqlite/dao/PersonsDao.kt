@@ -56,4 +56,22 @@ class PersonsDao {
         db.close()
     }
 
+    fun search(db:DatabaseHelper, keyWord:String) : ArrayList<Persons>{
+        val personsArrayList = ArrayList<Persons> ()
+        val db = db.writableDatabase
+        val cursor = db.rawQuery("SELECT * FROM persons WHERE person_name like '%$keyWord%' ", null)
+
+        while(cursor.moveToNext()) {
+            val person = Persons (
+                cursor.getInt(cursor.getColumnIndexOrThrow("person_id")),
+                cursor.getString(cursor.getColumnIndexOrThrow("person_name")),
+                cursor.getString(cursor.getColumnIndexOrThrow("person_phone")),
+                cursor.getInt(cursor.getColumnIndexOrThrow("person_age")),
+                cursor.getDouble(cursor.getColumnIndexOrThrow("person_height"))
+            )
+            personsArrayList.add(person)
+        }
+        return personsArrayList
+    }
+
 }

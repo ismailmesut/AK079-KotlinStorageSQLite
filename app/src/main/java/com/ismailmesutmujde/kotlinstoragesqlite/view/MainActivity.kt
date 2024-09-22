@@ -21,9 +21,11 @@ class MainActivity : AppCompatActivity() {
         //PersonsDao().insertPerson(db, "Ali", "3333333", 35,1.50)
 
         //PersonsDao().updatePerson(db, 3, "New Zeynep", "1111111",100,1.22)
-        PersonsDao().deletePerson(db, 3)
+        //PersonsDao().deletePerson(db, 3)
 
-        val personList = PersonsDao().allPersons(db)
+        //val personList = PersonsDao().allPersons(db)
+
+        val personList = PersonsDao().search(db,"met")
         for (p in personList) {
             Log.e("****************","****************")
             Log.e("Person id", (p.person_id).toString())
