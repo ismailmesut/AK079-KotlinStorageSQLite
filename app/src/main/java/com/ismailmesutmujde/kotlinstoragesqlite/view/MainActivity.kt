@@ -20,7 +20,8 @@ class MainActivity : AppCompatActivity() {
         //PersonsDao().insertPerson(db, "Zeynep", "7777777", 10,1.78)
         //PersonsDao().insertPerson(db, "Ali", "3333333", 35,1.50)
 
-        PersonsDao().updatePerson(db, 3, "New Zeynep", "1111111",100,1.22)
+        //PersonsDao().updatePerson(db, 3, "New Zeynep", "1111111",100,1.22)
+        PersonsDao().deletePerson(db, 3)
 
         val personList = PersonsDao().allPersons(db)
         for (p in personList) {

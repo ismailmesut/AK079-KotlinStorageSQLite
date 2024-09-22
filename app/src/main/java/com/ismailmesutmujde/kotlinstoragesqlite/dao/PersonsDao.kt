@@ -50,4 +50,10 @@ class PersonsDao {
         db.close()
     }
 
+    fun deletePerson(db:DatabaseHelper, person_id:Int) {
+        val db = db.writableDatabase
+        db.delete("persons", "person_id=?", arrayOf(person_id.toString()))
+        db.close()
+    }
+
 }
